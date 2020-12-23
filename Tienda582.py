@@ -16,12 +16,13 @@ ServiDORMilady = config['TiendaFTP582'][ "Servidor"]
 RutaFTP = config['TiendaFTP582']["RutaFTP"]
 #Lee ruta NAS
 RutaNAS = config['TiendaFTP582']["RutaNAS"]
-
+#Lee la ruta de journal de la caja
 JournalDirectoryCaja = config['CajasFTP']["journal"]
 
 def Romana():
 
-    """ Lee las funciones que conectan con el FTP y reciben los parametros"""
+    """ Lee las funciones que conectan con el FTP, reciben los parametros de conexion
+    y extrae cada journal de la caja y los insertar en el nas y el ftp de los journal. """
 
     ftp = p.ConeCTOftp(IpCaja)
     lista_journal = p.GotoDirectory(ftp, JournalDirectoryCaja)
