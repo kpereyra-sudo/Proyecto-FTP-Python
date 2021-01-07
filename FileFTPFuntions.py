@@ -1,8 +1,15 @@
 import ftplib  as f
 import os
 from datetime import datetime, timedelta
+import json
 
+with open('Config.json', 'r') as file:
+    config = json.load(file)
 
+# lee la ip desde el config file
+UserAD = config['userAD']['User']
+# leer ruta nas y la concatena con cada journal subido.
+Passwd = config['userAD'][ "passwd"]
 
 def ConeCTOftp(ip):
 
@@ -22,7 +29,7 @@ def ConecTOFTPMicrosoft(ip, directory):
     try:
         ftp = f.FTP(ip)
         print(ftp.welcome)
-        ftp.login('unicomer\katherine_pereyra', 'Kper0404')
+        ftp.login(UserAD, Passwd)
         ftp.cwd(directory)
     except:
         print("Problemas con la ip o la caja esta apagada")
@@ -56,6 +63,7 @@ def insertar_ruta_nas(ftp, journal, ruta):
     local_filename = os.path.join(ruta, journal)
     lf = open(local_filename, "wb")
     ftp.retrbinary("RETR " + journal, lf.write, 8*1024)
+    lf.close()
 
 def InsertarRutaFTP(journal, servidor, directorio, local_filename):
 
