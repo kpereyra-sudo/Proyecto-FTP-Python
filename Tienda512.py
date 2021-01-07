@@ -27,7 +27,10 @@ def Leopoldo():
     lista_journal = p.GotoDirectory(ftp, JournalDirectoryCaja)
 
     for journal in lista_journal:
-        if len(journal) == 7 :
+        if journal.startswith('JC') and len(journal) == 7 :
+        #     journal = journal
+        # if len(journal) == 7 :
+            print(journal)
         # insert NAS
             nas = p.insertar_ruta_nas(ftp, journal, RutaNAS)
         #Insert on My desk

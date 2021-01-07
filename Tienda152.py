@@ -27,7 +27,7 @@ def HiperUno():
     lista_journal = p.GotoDirectory(ftp, JournalDirectoryCaja)
 
     for journal in lista_journal:
-        if len(journal) == 7 :
+        if journal.startswith('JC') and len(journal) == 7:
         # insert NAS
             nas = p.insertar_ruta_nas(ftp, journal, RutaNAS)
         #Insert on My desk
