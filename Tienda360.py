@@ -27,12 +27,14 @@ def Galerias360():
     lista_journal = p.GotoDirectory(ftp, JournalDirectoryCaja)
 
     for journal in lista_journal:
-        if journal.startswith('JC') and len(journal) == 7:
-        # if len(journal) == 7 :
+        if journal.startswith('JC') and len(journal) == 7  :
+            print("Pronto Debe actualizar la ruta al siguiente año para enero")
+        elif len(journal) == 7:
         # insert NAS
             nas = p.insertar_ruta_nas(ftp, journal, RutaNAS)
-        #Insert on My desk
-            InsertFTP = p.InsertarRutaFTP(journal, ServiDORMilady, RutaFTP, NasPATHFile %journal )
+            print("INGRESANDO JOURNAL {} AL NAS".format(journal))
+        #Insert FTP Journal
+            # InsertFTP = p.InsertarRutaFTP(journal, ServiDORMilady, RutaFTP, NasPATHFile %journal )
 
 
 
